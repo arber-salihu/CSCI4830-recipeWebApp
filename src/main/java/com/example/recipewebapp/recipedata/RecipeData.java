@@ -1,12 +1,23 @@
 package com.example.recipewebapp.recipedata;
 
 public class RecipeData {
-    private int id;
+
+    @Id
+    @SequenceGenerator(
+            name = "recipe_sequence",
+            sequenceName = "recipe_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "recipe_sequence"
+    )
+    private Long id;
     private String name;
     private String description;
     private int calorieCount;
 
-    public RecipeData(int id, String name, String description, int calorieCount) {
+    public RecipeData(Long id, String name, String description, int calorieCount) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -19,7 +30,14 @@ public class RecipeData {
         this.calorieCount = calorieCount;
     }
 
-    public int getId() {
+    /*
+    I don't know why I had to make this empty constructor.
+     */
+    public RecipeData() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -35,7 +53,7 @@ public class RecipeData {
         return calorieCount;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
