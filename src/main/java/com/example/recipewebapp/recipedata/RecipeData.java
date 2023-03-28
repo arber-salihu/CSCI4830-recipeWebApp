@@ -1,5 +1,9 @@
 package com.example.recipewebapp.recipedata;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table
 public class RecipeData {
 
     @Id

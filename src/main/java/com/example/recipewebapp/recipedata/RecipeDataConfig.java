@@ -21,7 +21,7 @@ public class RecipeDataConfig {
             RecipeData gBread = new RecipeData(
                     "G-Bread",
                     "Delicious GARLIC bread!",
-                    230
+                    240
             );
 
             repository.saveAll(
