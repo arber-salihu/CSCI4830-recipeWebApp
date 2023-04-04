@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/recipe")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RecipeDataController {
 
     private final RecipeDataService recipeDataService;
@@ -35,8 +36,8 @@ public class RecipeDataController {
     public void updateRecipe(
             @PathVariable("recipeId") Long recipeId,
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) String description/*,
-            @RequestParam(required = false) int calorieCount*/) {
-        recipeDataService.updateRecipe(recipeId, name, description/*, calorieCount*/);
+            @RequestParam(required = false) String description,
+            @RequestParam(required = false) int calorieCount) {
+        recipeDataService.updateRecipe(recipeId, name, description, calorieCount);
     }
 }
