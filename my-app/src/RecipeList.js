@@ -15,17 +15,17 @@ function RecipeList() {
   }, []);
 
   return (
-    <CardDeck>
-      {recipes.map((recipe) => (
-        <Card key={recipe.id}>
-          <Card.Body>
-            <Card.Title>{recipe.name}</Card.Title>
-            <Card.Text>{recipe.description}</Card.Text>
-            <Card.Text>{recipe.calorieCount} calories</Card.Text>
-          </Card.Body>
-        </Card>
-      ))}
-    </CardDeck>
+      <CardDeck>
+        {recipes.map((recipe) => (
+          <Card key={recipe.id}>
+            <Card.Body>
+              <Card.Title>{recipe.name}</Card.Title>
+              <Card.Text>{recipe.description}</Card.Text>
+              <Card.Text>{recipe.calorieCount} calories</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardDeck>
   );
 }
 

@@ -1,39 +1,15 @@
 import React from 'react';
-import {
-  Nav,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
-} from './NavbarElements';
-  
+import './Navbar.css'
+
 const Navbar = () => {
   return (
-    <>
-      <Nav>
-        <Bars />
-  
-        <NavMenu>
-          <NavLink to='/about' activeStyle>
-            About
-          </NavLink>
-          <NavLink to='/team' activeStyle>
-            Teams
-          </NavLink>
-          <NavLink to='/blogs' activeStyle>
-            Blogs
-          </NavLink>
-          <NavLink to='/sign-up' activeStyle>
-            Sign Up
-          </NavLink>
-        </NavMenu>
-        <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-        </NavBtn>
-      </Nav>
-    </>
+      <ul>
+          <li><a className="#recipe" href="#home">Recipes</a></li>
+          <li><a href="#new">New Recipe</a></li>
+          <li className="floatRight"><a href="#signup">Signup</a></li>
+          <li className="floatRight"><a href="#login">Login</a></li>
+      </ul>
   );
 };
-  
+
 export default Navbar;
