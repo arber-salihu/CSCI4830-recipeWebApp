@@ -14,7 +14,6 @@ function NewRecipeForm() {
     };
 
     return (
-
         <form onSubmit={handleSubmit}>
             <h1>Add New Recipe</h1>
             <div>

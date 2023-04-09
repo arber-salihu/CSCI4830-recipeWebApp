@@ -5,7 +5,7 @@ import RecipeMainPage from "../pages/RecipeMainPage";
 import './Navbar.css';
 const Navbar = () => {
     return (
-        <Router>
+        <div>
             <nav>
                 <ul>
                     <li>
@@ -16,11 +16,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav>
-            <Routes>
-                <Route path="/" element={<RecipeMainPage />} />
-                <Route path="/newPage" element={<NewRecipeForm />} />
-            </Routes>
-        </Router>
+        </div>
     );
 };
 

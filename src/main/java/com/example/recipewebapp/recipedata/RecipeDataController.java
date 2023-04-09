@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/recipe")
@@ -21,6 +22,10 @@ public class RecipeDataController {
     public List<RecipeData> getRecipes() {
         return recipeDataService.getRecipes();
     }
+    @GetMapping(path = "{recipeId}")
+    public RecipeData getRecipeById(@PathVariable("recipeId") Long recipeId) {
+        return recipeDataService.getRecipeById(recipeId);
+    }
 
     @DeleteMapping(path= "{recipeDataId}")
     public void deleteRecipe(@PathVariable("recipeDataId") Long id) {
@@ -31,7 +36,6 @@ public class RecipeDataController {
     public void registerNewRecipe(@RequestBody RecipeData recipeData) {
         recipeDataService.addNewRecipe(recipeData);
     }
-
     @PutMapping(path = "{recipeId}")
     public void updateRecipe(
             @PathVariable("recipeId") Long recipeId,

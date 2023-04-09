@@ -21,6 +21,13 @@ public class RecipeDataService {
     public List<RecipeData> getRecipes() {
         return recipeDataRepository.findAll();
     }
+    public RecipeData getRecipeById(Long recipeId) {
+        return recipeDataRepository.findById(recipeId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "recipe with id " + recipeId + " does not exist"
+                ));
+    }
+
 
     public void addNewRecipe(RecipeData recipeData) {
         Optional<RecipeData> recipeOptional = recipeDataRepository
