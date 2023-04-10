@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
 import './NewRecipePage.css'
+
 function NewRecipeForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [ingredients, setIngredients] = useState('');
-    const [instructions, setInstructions] = useState('');
+    const [calorieCount, setCalorieCount]=useState('')
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Send data to backend or perform any other desired action
-        console.log(title, description, ingredients, instructions);
+        try {
+            const response = await fetch('http://localhost:8080/api/v1/recipe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: title,
+                    description: description,
+                    calorieCount: calorieCount
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create recipe');
+            }
+
+            setTitle('');
+            setDescription('');
+            setCalorieCount('')
+
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -34,20 +56,13 @@ function NewRecipeForm() {
                 ></textarea>
             </div>
             <div>
-                <label htmlFor="ingredients">Ingredients:</label>
-                <textarea
-                    id="ingredients"
-                    value={ingredients}
-                    onChange={(event) => setIngredients(event.target.value)}
-                ></textarea>
-            </div>
-            <div>
-                <label htmlFor="instructions">Instructions:</label>
-                <textarea
-                    id="instructions"
-                    value={instructions}
-                    onChange={(event) => setInstructions(event.target.value)}
-                ></textarea>
+                <label htmlFor="calorieCount">Calorie Count:</label>
+                <input
+                    type="number"
+                    id="calorieCount"
+                    value={calorieCount}
+                    onChange={(event) => setCalorieCount(event.target.value)}
+                />
             </div>
             <button type="submit">Submit</button>
         </form>
