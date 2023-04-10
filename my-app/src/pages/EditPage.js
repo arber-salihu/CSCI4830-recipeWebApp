@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import './EditPage.css'
 
 function EditRecipe() {
   const { id } = useParams();
@@ -44,40 +45,48 @@ function EditRecipe() {
   }
 
   return (
-    <div>
-      <h1>Edit Recipe</h1>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
+  <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Edit Recipe</title>
+      </head>
+  <body>
+  <div className="fancyDiv">
+    <h1>Edit Recipe</h1>
+    <form onSubmit={handleFormSubmit}>
+      <div>
+        <label htmlFor="name">Name</label>
+        <input
             id="name"
             name="name"
             type="text"
             defaultValue={recipe.name}
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <textarea
+        />
+      </div>
+      <div>
+        <label htmlFor="description">Description</label>
+        <textarea
             id="description"
             name="description"
             defaultValue={recipe.description}
-          />
-        </div>
-        <div>
-          <label htmlFor="calorieCount">Calorie Count</label>
-          <input
+        />
+      </div>
+      <div>
+        <label htmlFor="calorieCount">Calorie Count</label>
+        <input
             id="calorieCount"
             name="calorieCount"
             type="number"
             defaultValue={recipe.calorieCount}
-          />
-        </div>
-        <button type="submit">Save Changes</button>
-        <button onClick={handleDeleteClick}>Delete Recipe</button>
-      </form>
-    </div>
-  );
+        />
+      </div>
+      <button type="submit" className="fancyButton">Save Changes</button>
+      <button onClick={handleDeleteClick} className="fancyButton">Delete Recipe</button>
+    </form>
+  </div>
+  </body>
+</html>
+);
 }
 
 export default EditRecipe;

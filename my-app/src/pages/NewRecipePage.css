@@ -26,16 +26,21 @@ textarea {
 }
 
 button {
-    background-color: #f44336;
-    color: #fff;
+    background-color: #f44336 !important;
+    color: #fff !important;
     border: none;
-    border-radius: 0.3rem;
+    border-radius: 1.9rem;
     padding: 0.8rem 1.2rem;
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    margin: 10px 0px !important;
+}
+
+button a , button a:hover{
+    color: #fff;
 }
 
 button:hover {
-    background-color: #e53935;
+    background-color: #e53935 !important;
 }

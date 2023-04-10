@@ -14,7 +14,7 @@ function NewRecipeForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="fancyDiv">
             <h1>Add New Recipe</h1>
             <div>
                 <label htmlFor="title">Recipe Title:</label>
