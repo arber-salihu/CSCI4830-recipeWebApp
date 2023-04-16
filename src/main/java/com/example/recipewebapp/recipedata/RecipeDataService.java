@@ -21,13 +21,6 @@ public class RecipeDataService {
     public List<RecipeData> getRecipes() {
         return recipeDataRepository.findAll();
     }
-    public RecipeData getRecipeById(Long recipeId) {
-        return recipeDataRepository.findById(recipeId)
-                .orElseThrow(() -> new IllegalStateException(
-                        "recipe with id " + recipeId + " does not exist"
-                ));
-    }
-
 
     public void addNewRecipe(RecipeData recipeData) {
         Optional<RecipeData> recipeOptional = recipeDataRepository
@@ -48,7 +41,7 @@ public class RecipeDataService {
 
     @Transactional
     public void updateRecipe(Long recipeId, String name,
-                             String description,/*, int calorieCount*/int calorieCount) {
+                             String description/*, int calorieCount*/) {
         RecipeData recipeData = recipeDataRepository.findById(recipeId)
                 .orElseThrow(() -> new IllegalStateException(
                         "recipe with id " + recipeId + " does not exist"
