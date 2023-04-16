@@ -1,0 +1,46 @@
+/* new-recipe-form.css */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+input,
+textarea {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+button {
+    background-color: #f44336 !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 1.9rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin: 10px 0px !important;
+}
+
+button a , button a:hover{
+    color: #fff;
+}
+
+button:hover {
+    background-color: #e53935 !important;
+}
