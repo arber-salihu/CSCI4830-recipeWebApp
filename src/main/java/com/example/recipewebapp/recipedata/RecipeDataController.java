@@ -1,10 +1,11 @@
 package com.example.recipewebapp.recipedata;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/recipe")
@@ -37,11 +38,12 @@ public class RecipeDataController {
         recipeDataService.addNewRecipe(recipeData);
     }
     @PutMapping(path = "{recipeId}")
-    public void updateRecipe(
-            @PathVariable("recipeId") Long recipeId,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String description,
-            @RequestParam(required = false) int calorieCount) {
-        recipeDataService.updateRecipe(recipeId, name, description, calorieCount);
+    public ResponseEntity<Object> updateRecipeu(
+            @PathVariable Long recipeId,
+            @RequestBody RecipeData recipeData) {
+        recipeDataService.updateRecipe(recipeId, recipeData.getName(), recipeData.getDescription(), recipeData.getCalorieCount());
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
+
