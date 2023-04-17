@@ -19,16 +19,16 @@ public class RecipeData {
     private Long id;
     private String name;
     private String description;
-    private int calorieCount;
+    private Integer calorieCount;
 
-    public RecipeData(Long id, String name, String description, int calorieCount) {
+    public RecipeData(Long id, String name, String description, Integer calorieCount) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.calorieCount = calorieCount;
     }
 
-    public RecipeData(String name, String description, int calorieCount) {
+    public RecipeData(String name, String description, Integer calorieCount) {
         this.name = name;
         this.description = description;
         this.calorieCount = calorieCount;
@@ -69,7 +69,7 @@ public class RecipeData {
         this.description = description;
     }
 
-    public void setCalorieCount(int calorieCount) {
+    public void setCalorieCount(Integer calorieCount) {
         this.calorieCount = calorieCount;
     }
 

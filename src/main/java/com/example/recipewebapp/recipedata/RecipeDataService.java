@@ -47,21 +47,15 @@ public class RecipeDataService {
     }
 
     @Transactional
-    public void updateRecipe(Long recipeId, String name,
-                             String description,/*, int calorieCount*/int calorieCount) {
+    public void updateRecipe(Long recipeId, String name, String description, Integer calorieCount) {
         RecipeData recipeData = recipeDataRepository.findById(recipeId)
                 .orElseThrow(() -> new IllegalStateException(
                         "recipe with id " + recipeId + " does not exist"
                 ));
         if (name != null &&
-            name.length() > 0 &&
-            !Objects.equals(recipeData.getName(), name)
+                name.length() > 0 &&
+                !Objects.equals(recipeData.getName(), name)
         ) {
-//            Optional<RecipeData> recipeOptional = recipeDataRepository
-//                    .findRecipeDataByName(recipeData.getName());
-//            if (recipeOptional.isPresent()) {
-//                throw new IllegalStateException("name taken");
-//            }
             recipeData.setName(name);
         }
 
@@ -72,6 +66,9 @@ public class RecipeDataService {
             recipeData.setDescription(description);
         }
 
-
+        if (calorieCount != null && calorieCount > 0 && !Objects.equals(recipeData.getCalorieCount(), calorieCount)) {
+            recipeData.setCalorieCount(calorieCount);
+        }
     }
+
 }
