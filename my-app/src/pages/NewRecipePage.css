@@ -26,7 +26,7 @@ textarea {
 }
 
 button {
-    background-color: #f44336 !important;
+    background-color: #0A58CAFF !important;
     color: #fff !important;
     border: none;
     border-radius: 1.9rem;
@@ -42,5 +42,5 @@ button a , button a:hover{
 }
 
 button:hover {
-    background-color: #e53935 !important;
+    background-color: #09408b !important;
 }
