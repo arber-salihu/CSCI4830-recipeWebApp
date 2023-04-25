@@ -1,7 +1,5 @@
 import React from 'react';
-import NewRecipeForm from "../pages/NewRecipePage";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import RecipeMainPage from "../pages/RecipeMainPage";
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 const Navbar = () => {
     return (
@@ -13,6 +11,12 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link to="/newPage" >New Recipe</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/login" >Login</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/signup" >Sign Up</Link>
                     </li>
                 </ul>
             </nav>
