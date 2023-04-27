@@ -20,18 +20,24 @@ public class RecipeData {
     private String name;
     private String description;
     private Integer calorieCount;
+    private String ingredients;
+    private String instructions;
 
-    public RecipeData(Long id, String name, String description, Integer calorieCount) {
+    public RecipeData(Long id, String name, String description, Integer calorieCount, String ingredients, String instructions) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.calorieCount = calorieCount;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
     }
 
-    public RecipeData(String name, String description, Integer calorieCount) {
+    public RecipeData(String name, String description, Integer calorieCount, String ingredients, String instructions) {
         this.name = name;
         this.description = description;
         this.calorieCount = calorieCount;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
     }
 
     /*
@@ -56,7 +62,12 @@ public class RecipeData {
     public int getCalorieCount() {
         return calorieCount;
     }
-
+    public String getIngredients() {
+        return ingredients;
+    }
+    public String getInstructions() {
+        return instructions;
+    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -73,6 +84,13 @@ public class RecipeData {
         this.calorieCount = calorieCount;
     }
 
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
     @Override
     public String toString() {
         return "RecipeData{" +
@@ -80,6 +98,8 @@ public class RecipeData {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", calorieCount=" + calorieCount +
+                ", ingredients='" + ingredients + '\'' +
+                ", instructions='" + instructions + '\'' +
                 '}';
     }
 }
