@@ -8,7 +8,7 @@ import java.util.Objects;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long user_id;
 
     @Column(nullable = false)
     private String username;
@@ -29,12 +29,12 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser_id(Long id) {
+        this.user_id = id;
     }
 
     public String getUsername() {
@@ -62,6 +62,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, email, password);
+        return Objects.hash(user_id, username, email, password);
     }
 }

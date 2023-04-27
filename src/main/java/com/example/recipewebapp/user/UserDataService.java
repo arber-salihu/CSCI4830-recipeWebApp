@@ -22,8 +22,12 @@ public class UserDataService {
 
     public void registerNewUser(User user) {
         boolean emailExists = userRepository.existsByEmail(user.getEmail());
+        boolean usernameExist = userRepository.existsByUsername(user.getUsername());
         if (emailExists) {
             throw new IllegalStateException("Email is already taken");
+        }
+        if (usernameExist) {
+            throw new IllegalStateException("Username is already taken");
         }
         userRepository.save(user);
     }
@@ -35,8 +39,12 @@ public class UserDataService {
         // check if email is being changed to an already existing email
         if (!userToUpdate.getEmail().equals(updatedUser.getEmail())) {
             boolean emailExists = userRepository.existsByEmail(updatedUser.getEmail());
+            boolean usernameExists = userRepository.existsByUsername(updatedUser.getUsername());
             if (emailExists) {
                 throw new IllegalStateException("Email is already taken");
+            }
+            if (usernameExists){
+                throw new IllegalStateException("Username is already taken");
             }
         }
 
