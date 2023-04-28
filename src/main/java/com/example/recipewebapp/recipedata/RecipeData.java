@@ -97,7 +97,7 @@ public class RecipeData {
     @Override
     public String toString() {
         return "RecipeData{" +
-                "id=" + recipe_id +
+                "recipe id=" + recipe_id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", calorieCount=" + calorieCount +
