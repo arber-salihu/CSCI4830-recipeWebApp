@@ -23,6 +23,8 @@ function RecipeDetails() {
     <div className="wideFancyDiv">
       <h1>{recipe.name}</h1>
       <h5>Description: {recipe.description}</h5>
+      <h5>Ingredients: {recipe.ingredients}</h5>
+      <h5>Instructions: {recipe.instructions}</h5>
       <p>{recipe.calorieCount} calories</p>
       <button className="fancyButton"><Link to={`/edit-recipe/${id}`}>Edit</Link></button>
     </div>
