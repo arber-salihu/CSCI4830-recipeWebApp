@@ -38,10 +38,10 @@ public class RecipeDataController {
         recipeDataService.addNewRecipe(recipeData);
     }
     @PutMapping(path = "{recipeId}")
-    public ResponseEntity<Object> updateRecipeu(
+    public ResponseEntity<Object> updateRecipe(
             @PathVariable Long recipeId,
             @RequestBody RecipeData recipeData) {
-        recipeDataService.updateRecipe(recipeId, recipeData.getName(), recipeData.getDescription(), recipeData.getCalorieCount());
+        recipeDataService.updateRecipe(recipeId, recipeData.getName(), recipeData.getDescription(), recipeData.getCalorieCount(), recipeData.getIngredients(), recipeData.getInstructions());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

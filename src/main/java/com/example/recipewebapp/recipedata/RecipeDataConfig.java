@@ -14,14 +14,18 @@ public class RecipeDataConfig {
         return args -> {
             RecipeData chickenAlfredo = new RecipeData(
                     "Chicken Alfredo",
-                    "A creamy dish of tastey alfredo pasta with chicken.",
-                    1050
+                    "A creamy dish of tasty alfredo pasta with chicken.",
+                    1050,
+                    "chicken, pasta, cream, cheese, and garlic. ",
+                    "Cook the chicken and the pasta and put them together with the rest of the ingredients. Viola!"
             );
 
             RecipeData gBread = new RecipeData(
                     "G-Bread",
                     "Delicious GARLIC bread!",
-                    240
+                    240,
+                    "Thick sliced bread, garlic, and butter.",
+                    "Toast bread on pan with premade garlic butter. Yum!"
             );
 
             repository.saveAll(

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 function SignUp() {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -7,7 +8,29 @@ function SignUp() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(`Email: ${email}, Username: ${username}, Password: ${password}`);
+
+        fetch('http://localhost:8080/api/v1/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                username: username,
+                password: password
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('User created successfully!');
+                } else {
+                    console.error('Error creating user:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error creating user:', error);
+            });
+        window.location.href='/';
     }
 
     return (

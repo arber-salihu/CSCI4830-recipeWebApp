@@ -72,6 +72,22 @@ function EditRecipe() {
         />
       </div>
       <div>
+        <label htmlFor="ingredients">Ingredients</label>
+        <textarea
+            id="ingredients"
+            name="ingredients"
+            defaultValue={recipe.ingredients}
+        />
+      </div>
+      <div>
+        <label htmlFor="instructions">Instructions</label>
+        <textarea
+            id="instructions"
+            name="instructions"
+            defaultValue={recipe.instructions}
+        />
+      </div>
+      <div>
         <label htmlFor="calorieCount">Calorie Count</label>
         <input
             id="calorieCount"

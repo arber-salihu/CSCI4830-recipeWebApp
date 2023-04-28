@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-import "./RecipeCard.css";
+import { Card, CardBody, CardTitle, CardSubtitle, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./RecipeCard.css";
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -16,21 +16,21 @@ function RecipeList() {
   }, []);
 
   return (
-    
-    <div className="card-container">
-      {recipes.map((recipe) => (
-        <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-          <Card key={recipe.id}>
-            <CardBody>
-              <CardTitle tag="h2">{recipe.name}</CardTitle>
-              <CardSubtitle>{recipe.description}</CardSubtitle>
-              <p>{recipe.calorieCount} calories</p>
-            </CardBody>
-          </Card>
-        </Link>
-      ))}
-    </div>
- 
+      <Row>
+        {recipes.map((recipe) => (
+            <Col md={4} key={recipe.recipe_id}>
+              <Link to={`/recipe/${recipe.recipe_id}`}>
+                <Card className="recipe-list-row">
+                  <CardBody>
+                    <CardTitle tag="h2">{recipe.name}</CardTitle>
+                    <CardSubtitle>{recipe.description}</CardSubtitle>
+                    <p>{recipe.calorieCount} calories</p>
+                  </CardBody>
+                </Card>
+              </Link>
+            </Col>
+        ))}
+      </Row>
   );
 }
 

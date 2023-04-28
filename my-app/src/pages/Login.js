@@ -4,32 +4,43 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function handleUsernameChange(event) {
-        setUsername(event.target.value);
-    }
-
-    function handlePasswordChange(event) {
-        setPassword(event.target.value);
-    }
-
     function handleSubmit(event) {
         event.preventDefault();
-        // Add code to validate the username and password
+
+        fetch('http://localhost:8080/api/v1/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        })
+            .then(response => {
+                if (response.ok) {
+                    // TODO: handle successful login
+                } else {
+                    // TODO: handle failed login
+                }
+            })
+            .catch(error => {
+                // TODO: handle network error
+            });
     }
 
     return (
-        <form onSubmit={handleSubmit} className="fancyDiv">
-            <h1>Login</h1>
-            <label>
-                Username:
-                <input type="text" value={username} onChange={handleUsernameChange} />
-            </label>
-            <label>
-                Password:
-                <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <button type="submit">Login</button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit} className="fancyDiv">
+                <h1>Login</h1>
+                <label>
+                    Username:
+                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                </label>
+                <br />
+                <button type="submit">Login</button>
+            </form>
+        </div>
     );
 }
 

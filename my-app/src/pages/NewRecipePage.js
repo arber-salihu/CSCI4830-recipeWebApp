@@ -4,7 +4,9 @@ import './NewRecipePage.css'
 function NewRecipeForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [calorieCount, setCalorieCount]=useState('')
+    const [ingredients,setIngredients] = useState('');
+    const [instructions, setInstructions] = useState('');
+    const [calorieCount, setCalorieCount]=useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,6 +20,8 @@ function NewRecipeForm() {
                 body: JSON.stringify({
                     name: title,
                     description: description,
+                    ingredients: ingredients,
+                    instructions: instructions,
                     calorieCount: calorieCount
                 })
             });
@@ -28,7 +32,10 @@ function NewRecipeForm() {
 
             setTitle('');
             setDescription('');
-            setCalorieCount('')
+            setIngredients('');
+            setInstructions('');
+            setCalorieCount('');
+            window.location.href = '/';
 
         } catch (error) {
             console.error(error);
@@ -53,6 +60,22 @@ function NewRecipeForm() {
                     id="description"
                     value={description}
                     onChange={(event) => setDescription(event.target.value)}
+                ></textarea>
+            </div>
+            <div>
+                <label htmlFor="ingredients">Ingredients:</label>
+                <textarea
+                    id="ingredients"
+                    value={ingredients}
+                    onChange={(event) => setIngredients(event.target.value)}
+                ></textarea>
+            </div>
+            <div>
+                <label htmlFor="instructions">Instructions:</label>
+                <textarea
+                    id="instructions"
+                    value={instructions}
+                    onChange={(event) => setInstructions(event.target.value)}
                 ></textarea>
             </div>
             <div>
