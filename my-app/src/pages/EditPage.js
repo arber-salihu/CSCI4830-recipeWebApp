@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import './EditPage.css'
 
 function EditRecipe() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const navigate = useNavigate();
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
     async function fetchRecipe() {
@@ -17,7 +18,7 @@ function EditRecipe() {
   }, [id]);
 
   const handleDeleteClick = async () => {
-    await fetch(`http://localhost:8080/api/v1/recipe/${id}`, {
+    await fetch(`http://localhost:8080/api/v1/recipe/${id}/${username}`, {
       method: "DELETE",
     });
     navigate("/");
@@ -28,14 +29,16 @@ function EditRecipe() {
     const formData = new FormData(event.target);
     const name = formData.get("name");
     const description = formData.get("description");
+    const instructions = formData.get("instructions");
+    const ingredients = formData.get("ingredients");
     const calorieCount = parseInt(formData.get("calorieCount"), 10);
 
-    await fetch(`http://localhost:8080/api/v1/recipe/${id}`, {
+    await fetch(`http://localhost:8080/api/v1/recipe/${id}/${username}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, description, calorieCount }),
+      body: JSON.stringify({ name, description,instructions, ingredients, calorieCount }),
     });
     navigate("/");
   };

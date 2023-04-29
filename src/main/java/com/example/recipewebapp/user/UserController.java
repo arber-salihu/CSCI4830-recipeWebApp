@@ -1,5 +1,6 @@
 package com.example.recipewebapp.user;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,6 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping
-//    public List<User> getUsers() {
-//        return userService.getUsers();
-//    }
 
     @GetMapping(path = "{userId}")
     public User getUserById(@PathVariable("userId") Long userId) {

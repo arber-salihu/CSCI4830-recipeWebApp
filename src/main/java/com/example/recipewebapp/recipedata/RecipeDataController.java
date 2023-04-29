@@ -33,9 +33,9 @@ public class RecipeDataController {
         recipeDataService.deleteRecipe(username, id);
     }
 
-    @PostMapping
-    public void registerNewRecipe(@RequestBody RecipeData recipeData) {
-        recipeDataService.addNewRecipe(recipeData);
+    @PostMapping("/{username}")
+    public void registerNewRecipe(@PathVariable String username, @RequestBody RecipeData recipeData) {
+        recipeDataService.addNewRecipe(username, recipeData);
     }
 
     @PutMapping(path = "{recipeId}/{username}")

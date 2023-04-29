@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserDataService {
@@ -15,10 +16,12 @@ public class UserDataService {
         this.userRepository = userRepository;
     }
 
+
     public User getUserById(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException("User with id " + userId + " does not exist"));
     }
+
 
     public void registerNewUser(User user) {
         boolean emailExists = userRepository.existsByEmail(user.getEmail());

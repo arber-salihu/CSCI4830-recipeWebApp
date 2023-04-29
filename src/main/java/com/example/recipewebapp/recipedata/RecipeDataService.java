@@ -1,5 +1,7 @@
 package com.example.recipewebapp.recipedata;
 
+import com.example.recipewebapp.user.User;
+import com.example.recipewebapp.user.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,11 +45,24 @@ public class RecipeDataService {
         }
     }
 
-    public void deleteRecipe(Long recipeDataId) {
+    public void deleteRecipe(String username,Long recipeDataId) {
         boolean exists = recipeDataRepository.existsById(recipeDataId);
         if (!exists) {
             throw new IllegalStateException("recipe with id " + recipeDataId + " does not exist");
         }
+
+        RecipeData recipeData = recipeDataRepository.findById(recipeDataId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "recipe with id " + recipeDataId + " does not exist"
+                ));
+
+        User currentUser = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("User with username " + username + " does not exist"));
+
+        if (!recipeData.getUser().equals(currentUser)) {
+            throw new IllegalStateException("User with username " + username + " is not authorized to delete this recipe");
+        }
+
         recipeDataRepository.deleteById(recipeDataId);
     }
 

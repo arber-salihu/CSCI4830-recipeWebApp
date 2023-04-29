@@ -10,6 +10,19 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecipeData> recipes = new ArrayList<>();
+
+    public List<RecipeData> getRecipes(){
+        return recipes;
+    }
+
+    public void setRecipes(List<RecipeData> recipes) {
+        this.recipes = recipes;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_id;

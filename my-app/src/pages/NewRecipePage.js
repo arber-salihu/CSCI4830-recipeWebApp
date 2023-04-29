@@ -12,10 +12,12 @@ function NewRecipeForm() {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8080/api/v1/recipe', {
+            const username = localStorage.getItem('username');
+            const response = await fetch(`http://localhost:8080/api/v1/recipe/${username}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${username}`
                 },
                 body: JSON.stringify({
                     name: title,
@@ -25,6 +27,7 @@ function NewRecipeForm() {
                     calorieCount: calorieCount
                 })
             });
+
 
             if (!response.ok) {
                 throw new Error('Failed to create recipe');
