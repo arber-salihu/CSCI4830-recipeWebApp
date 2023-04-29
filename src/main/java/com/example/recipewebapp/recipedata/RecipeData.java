@@ -1,15 +1,26 @@
 package com.example.recipewebapp.recipedata;
 
 import com.example.recipewebapp.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
 @Table
 public class RecipeData {
 
-    //    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
+
+    public User getUser(){
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Id
     @SequenceGenerator(
             name = "recipe_sequence",
@@ -27,15 +38,7 @@ public class RecipeData {
     private String ingredients;
     private String instructions;
 
-//    public RecipeData(Long recipe_id, String name, String description, Integer calorieCount, String ingredients, String instructions, User user) {
-//        this.recipe_id = recipe_id;
-//        this.name = name;
-//        this.description = description;
-//        this.calorieCount = calorieCount;
-//        this.ingredients = ingredients;
-//        this.instructions = instructions;
-//        this.user = user;
-//    }
+
 
     public RecipeData(String name, String description, Integer calorieCount, String ingredients, String instructions) {
         this.name = name;

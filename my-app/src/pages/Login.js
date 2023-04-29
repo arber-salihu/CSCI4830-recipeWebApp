@@ -7,20 +7,28 @@ function Login() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        fetch('http://localhost:8080/api/v1/login', {
+        fetch(`http://localhost:8080/api/v1/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         })
             .then(response => {
                 if (response.ok) {
-                    // TODO: handle successful login
+                    response.json().then(data => {
+                        localStorage.setItem('username', data.username);
+                        // TODO: handle successful login
+                        console.log("Login successful");
+                    });
+                } else if (response.status === 401) {
+                    // TODO: handle authentication failure
+                    console.log("Invalid username or password");
                 } else {
-                    // TODO: handle failed login
+                    // TODO: handle other errors
+                    console.log("Unexpected error occurred");
                 }
             })
             .catch(error => {
                 // TODO: handle network error
+                console.error("Network error:", error);
             });
     }
 

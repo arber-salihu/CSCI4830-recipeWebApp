@@ -2,6 +2,10 @@ package com.example.recipewebapp.user;
 
 import jakarta.persistence.*;
 import java.util.Objects;
+import com.example.recipewebapp.recipedata.RecipeData;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "users")

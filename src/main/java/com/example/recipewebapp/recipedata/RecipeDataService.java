@@ -14,6 +14,9 @@ public class RecipeDataService {
     private final RecipeDataRepository recipeDataRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     public RecipeDataService(RecipeDataRepository recipeDataRepository) {
         this.recipeDataRepository = recipeDataRepository;
     }
@@ -29,13 +32,15 @@ public class RecipeDataService {
     }
 
 
-    public void addNewRecipe(RecipeData recipeData) {
-        Optional<RecipeData> recipeOptional = recipeDataRepository
-                .findRecipeDataByName(recipeData.getName());
-        if (recipeOptional.isPresent()) {
-            throw new IllegalStateException("name taken");
+    public void addNewRecipe(String username, RecipeData recipeData) {
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            recipeData.setUser(user);
+            recipeDataRepository.save(recipeData);
+        } else {
+            throw new IllegalStateException("User with username " + username + " does not exist");
         }
-        recipeDataRepository.save(recipeData);
     }
 
     public void deleteRecipe(Long recipeDataId) {
@@ -47,11 +52,19 @@ public class RecipeDataService {
     }
 
     @Transactional
-    public void updateRecipe(Long recipeId, String name, String description, Integer calorieCount, String ingredients, String instructions) {
+    public void updateRecipe(String username, Long recipeId, String name, String description, Integer calorieCount, String ingredients, String instructions) {
         RecipeData recipeData = recipeDataRepository.findById(recipeId)
                 .orElseThrow(() -> new IllegalStateException(
                         "recipe with id " + recipeId + " does not exist"
                 ));
+
+        User currentUser = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("User with username " + username + " does not exist"));
+
+        if (!recipeData.getUser().equals(currentUser)) {
+            throw new IllegalStateException("User with username " + username + " is not authorized to edit this recipe");
+        }
+
         if (name != null &&
                 name.length() > 0 &&
                 !Objects.equals(recipeData.getName(), name)

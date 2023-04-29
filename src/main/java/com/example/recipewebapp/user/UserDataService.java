@@ -61,8 +61,10 @@ public class UserDataService {
         userRepository.deleteById(userId);
     }
 
-    public boolean authenticateUser(String username, String password) {
-        return (Boolean) userRepository.findByUsernameAndPassword(username, password)
-                .orElseThrow(() -> new IllegalStateException("invalid username or password"));
+    public User authenticateUser(String username, String password) {
+        Optional<User> user = userRepository.findByUsernameAndPassword(username, password);
+        return user.orElse(null);
     }
+
+
 }

@@ -22,12 +22,12 @@ public class UserLoginController {
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> authenticateUser(@PathVariable("username") String username,@PathVariable("password") String password) {
-        boolean isAuthenticated = userService.authenticateUser(username, password);
-        if (isAuthenticated) {
-            return new ResponseEntity<>(true, HttpStatus.OK);
+    public ResponseEntity<User> authenticateUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+        User authenticatedUser = userService.authenticateUser(username, password);
+        if (authenticatedUser != null) {
+            return new ResponseEntity<>(authenticatedUser, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(false, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 }
