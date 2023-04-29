@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserDataService {
@@ -15,10 +16,12 @@ public class UserDataService {
         this.userRepository = userRepository;
     }
 
+
     public User getUserById(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException("User with id " + userId + " does not exist"));
     }
+
 
     public void registerNewUser(User user) {
         boolean emailExists = userRepository.existsByEmail(user.getEmail());
@@ -61,9 +64,10 @@ public class UserDataService {
         userRepository.deleteById(userId);
     }
 
-    //This is a function to implement for login. But I gave up bc I was tired.
-    public User getUserByUsernameAndPassword(String username, String password) {
-        return (User) userRepository.findByUsernameAndPassword(username, password)
-                .orElseThrow(() -> new IllegalStateException("invalid username or password"));
+    public User authenticateUser(String username, String password) {
+        Optional<User> user = userRepository.findByUsernameAndPassword(username, password);
+        return user.orElse(null);
     }
+
+
 }

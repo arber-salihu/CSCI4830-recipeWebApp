@@ -2,10 +2,27 @@ package com.example.recipewebapp.user;
 
 import jakarta.persistence.*;
 import java.util.Objects;
+import com.example.recipewebapp.recipedata.RecipeData;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "users")
 public class User {
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecipeData> recipes = new ArrayList<>();
+
+    public List<RecipeData> getRecipes(){
+        return recipes;
+    }
+
+    public void setRecipes(List<RecipeData> recipes) {
+        this.recipes = recipes;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_id;

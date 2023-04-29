@@ -28,22 +28,25 @@ public class RecipeDataController {
         return recipeDataService.getRecipeById(recipeId);
     }
 
-    @DeleteMapping(path= "{recipeDataId}")
-    public void deleteRecipe(@PathVariable("recipeDataId") Long id) {
-        recipeDataService.deleteRecipe(id);
+    @DeleteMapping(path= "{recipeDataId}/{username}")
+    public void deleteRecipe(@PathVariable("recipeDataId") Long id, @PathVariable("username") String username) {
+        recipeDataService.deleteRecipe(username, id);
     }
 
-    @PostMapping
-    public void registerNewRecipe(@RequestBody RecipeData recipeData) {
-        recipeDataService.addNewRecipe(recipeData);
+    @PostMapping("/{username}")
+    public void registerNewRecipe(@PathVariable String username, @RequestBody RecipeData recipeData) {
+        recipeDataService.addNewRecipe(username, recipeData);
     }
-    @PutMapping(path = "{recipeId}")
+
+    @PutMapping(path = "{recipeId}/{username}")
     public ResponseEntity<Object> updateRecipe(
             @PathVariable Long recipeId,
+            @PathVariable String username,
             @RequestBody RecipeData recipeData) {
-        recipeDataService.updateRecipe(recipeId, recipeData.getName(), recipeData.getDescription(), recipeData.getCalorieCount(), recipeData.getIngredients(), recipeData.getInstructions());
+        recipeDataService.updateRecipe(username, recipeId, recipeData.getName(), recipeData.getDescription(), recipeData.getCalorieCount(), recipeData.getIngredients(), recipeData.getInstructions());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
 }
 
