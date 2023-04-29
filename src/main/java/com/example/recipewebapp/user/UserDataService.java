@@ -61,9 +61,8 @@ public class UserDataService {
         userRepository.deleteById(userId);
     }
 
-    //This is a function to implement for login. But I gave up bc I was tired.
-    public User getUserByUsernameAndPassword(String username, String password) {
-        return (User) userRepository.findByUsernameAndPassword(username, password)
+    public boolean authenticateUser(String username, String password) {
+        return (Boolean) userRepository.findByUsernameAndPassword(username, password)
                 .orElseThrow(() -> new IllegalStateException("invalid username or password"));
     }
 }
