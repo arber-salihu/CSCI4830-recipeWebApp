@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -15,19 +16,15 @@ function Login() {
                 if (response.ok) {
                     response.json().then(data => {
                         localStorage.setItem('username', data.username);
-                        // TODO: handle successful login
                         console.log("Login successful");
                     });
                 } else if (response.status === 401) {
-                    // TODO: handle authentication failure
                     console.log("Invalid username or password");
                 } else {
-                    // TODO: handle other errors
                     console.log("Unexpected error occurred");
                 }
             })
             .catch(error => {
-                // TODO: handle network error
                 console.error("Network error:", error);
             });
     }
@@ -47,6 +44,7 @@ function Login() {
                 </label>
                 <br />
                 <button type="submit">Login</button>
+                <button><Link to={"/signup"}>Sign Up</Link></button>
             </form>
         </div>
     );

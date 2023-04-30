@@ -11,6 +11,7 @@ public class UserDataService {
 
     private final UserRepository userRepository;
 
+
     @Autowired
     public UserDataService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,6 +23,10 @@ public class UserDataService {
                 .orElseThrow(() -> new IllegalStateException("User with id " + userId + " does not exist"));
     }
 
+    public User getUserByUsername(String username){
+        return userRepository.findByUsername(username)
+                .orElseThrow(()-> new IllegalStateException("No user with username" + username));
+    }
 
     public void registerNewUser(User user) {
         boolean emailExists = userRepository.existsByEmail(user.getEmail());
@@ -35,9 +40,9 @@ public class UserDataService {
         userRepository.save(user);
     }
 
-    public void updateUser(Long userId, User updatedUser) {
-        User userToUpdate = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalStateException("User with id " + userId + " does not exist"));
+    public void updateUser(String username, User updatedUser) {
+        User userToUpdate = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("No user with username" + username));
 
         // check if email is being changed to an already existing email
         if (!userToUpdate.getEmail().equals(updatedUser.getEmail())) {
