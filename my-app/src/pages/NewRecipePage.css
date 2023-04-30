@@ -26,7 +26,7 @@ textarea {
 }
 
 button {
-    background-color: #0A58CAFF !important;
+    background-color: #04AA6D;
     color: #fff !important;
     border: none;
     border-radius: 1.9rem;
@@ -42,5 +42,22 @@ button a , button a:hover{
 }
 
 button:hover {
-    background-color: #09408b !important;
+    background-color: #06c47d !important;
+}
+
+.red-button {
+    background-color: #D2400D !important;
+}
+
+.red-button:hover {
+    background-color: #ea4b12 !important;
+}
+
+.link-color {
+    color:black !important;
+}
+
+.link-color:hover {
+    color: #04AA6D !important;
+    transition: all 0.2s ease-in-out;
 }

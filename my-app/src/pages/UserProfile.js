@@ -59,9 +59,9 @@ function UserProfile() {
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" value={newPassword || user.password} onChange={(event) => setNewPassword(event.target.value)} />
                 </div>
-                <button className="button-layout" type="submit">Save Changes</button>
+                <button type="submit">Save Changes</button>
             </form>
-            <button className="button-layout" onClick={handleLogout}>Logout</button>
+            <div><button className="red-button" onClick={handleLogout}>Logout</button></div>
         </div>
 
     );

@@ -16,7 +16,7 @@ function RecipeList() {
   }, []);
 
   return (
-      <CardDeck className="background-image">
+      <CardDeck>
         {recipes.map((recipe) => (
           <Card key={recipe.id}>
             <Card.Body>
