@@ -21,7 +21,7 @@ function RecipeDetails() {
 
   return (
     <div className="wideFancyDiv">
-      <h1>{recipe.name}</h1>
+      <h1>{recipe.name}</h1><br/>
       <h5>Description: {recipe.description}</h5>
       <h5>Ingredients: {recipe.ingredients}</h5>
       <h5>Instructions: {recipe.instructions}</h5>

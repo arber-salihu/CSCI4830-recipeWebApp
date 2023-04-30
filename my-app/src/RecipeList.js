@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
+import '../App.css';
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);

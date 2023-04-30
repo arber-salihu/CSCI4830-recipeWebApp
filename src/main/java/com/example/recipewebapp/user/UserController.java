@@ -26,16 +26,20 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+    @GetMapping("/username/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return userService.getUserByUsername(username);
+    }
     @PostMapping
     public ResponseEntity<Void> addUser(@RequestBody User user) {
         userService.registerNewUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "{userId}")
-    public ResponseEntity<Void> updateUser(@PathVariable("userId") Long userId, @RequestBody User user) {
-        userService.updateUser(userId, user);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PutMapping("/username/{username}")
+    public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
+        User updatedUser = userService.updateUser(username, user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "{userId}")

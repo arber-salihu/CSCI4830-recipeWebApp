@@ -19,7 +19,7 @@ function RecipeList() {
       <Row>
         {recipes.map((recipe) => (
             <Col md={4} key={recipe.recipe_id}>
-              <Link to={`/recipe/${recipe.recipe_id}`}>
+              <Link className="link-color" to={`/recipe/${recipe.recipe_id}`}>
                 <Card className="recipe-list-row">
                   <CardBody>
                     <CardTitle tag="h2">{recipe.name}</CardTitle>

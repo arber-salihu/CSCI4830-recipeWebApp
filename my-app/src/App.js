@@ -8,6 +8,7 @@ import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup'
 import Navbar from "./components/Navbar";
 import "./App.css";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<RecipeMainPage />} />
         <Route path="/newPage" element={<NewRecipeForm />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/signup" element={<SignupPage />} />
         <Route path="/recipe/:id" element={<RecipeList />} />
         <Route path="/edit-recipe/:id" element={<EditRecipe />} />

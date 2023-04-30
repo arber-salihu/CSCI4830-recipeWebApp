@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import './EditPage.css'
+import '../index.css'
 
 function EditRecipe() {
   const { id } = useParams();
@@ -48,12 +49,6 @@ function EditRecipe() {
   }
 
   return (
-  <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <title>Edit Recipe</title>
-      </head>
-  <body>
   <div className="fancyDiv">
     <h1>Edit Recipe</h1>
     <form onSubmit={handleFormSubmit}>
@@ -100,11 +95,10 @@ function EditRecipe() {
         />
       </div>
       <button type="submit" className="fancyButton">Save Changes</button>
-      <button onClick={handleDeleteClick} className="fancyButton">Delete Recipe</button>
+      <button onClick={handleDeleteClick} className="fancyButton red-button">Delete Recipe</button>
     </form>
   </div>
-  </body>
-</html>
+
 );
 }
 
