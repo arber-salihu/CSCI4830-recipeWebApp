@@ -40,26 +40,35 @@ public class UserDataService {
         userRepository.save(user);
     }
 
-    public void updateUser(String username, User updatedUser) {
+    public User updateUser(String username, User updatedUser) {
         User userToUpdate = userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalStateException("No user with username" + username));
 
         // check if email is being changed to an already existing email
-        if (!userToUpdate.getEmail().equals(updatedUser.getEmail())) {
+        if (!Objects.equals(userToUpdate.getEmail(), updatedUser.getEmail())) {
             boolean emailExists = userRepository.existsByEmail(updatedUser.getEmail());
-            boolean usernameExists = userRepository.existsByUsername(updatedUser.getUsername());
             if (emailExists) {
                 throw new IllegalStateException("Email is already taken");
             }
-            if (usernameExists){
+        }
+
+        // check if username is being changed to an already existing username
+        if (!Objects.equals(userToUpdate.getUsername(), updatedUser.getUsername())) {
+            boolean usernameExists = userRepository.existsByUsername(updatedUser.getUsername());
+            if (usernameExists) {
                 throw new IllegalStateException("Username is already taken");
             }
         }
 
         userToUpdate.setUsername(updatedUser.getUsername());
         userToUpdate.setEmail(updatedUser.getEmail());
+        userToUpdate.setPassword(updatedUser.getPassword());
         userRepository.save(userToUpdate);
+        return userToUpdate;
     }
+
+
+
 
     public void deleteUser(Long userId) {
         boolean exists = userRepository.existsById(userId);
