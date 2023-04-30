@@ -44,9 +44,9 @@ function UserProfile() {
     }
 
     return (
-        <div>
-            <h1>User Profile</h1>
+        <div className="fancyDiv">
             <form onSubmit={handleSubmit}>
+                <h1>User Profile</h1>
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input type="text" id="email" name="email" value={newEmail || user.email} onChange={(event) => setNewEmail(event.target.value)} />

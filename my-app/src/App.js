@@ -12,7 +12,7 @@ import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
-    <Router className="background-image">
+    <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<RecipeMainPage />} />

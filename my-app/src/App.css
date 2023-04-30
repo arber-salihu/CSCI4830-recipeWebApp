@@ -17,12 +17,6 @@ li.right {
   }
 }
 
-.background-image {
-  background-image: url('./img/green-food-background.jpg');
-  width: 100px;
-  height: 100px;
-  opacity: 10%;
-}
 
 .App-header {
   background-color: #282c34;
