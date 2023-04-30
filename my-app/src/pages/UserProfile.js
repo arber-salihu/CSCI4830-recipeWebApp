@@ -5,7 +5,10 @@ function UserProfile() {
     const [newEmail, setNewEmail] = useState('');
     const [newUsername, setNewUsername] = useState('');
     const [newPassword, setNewPassword] = useState('');
-
+    const handleLogout = () => {
+        localStorage.clear(); // Clear the local storage
+        window.location.href = '/';
+    }
     const username = localStorage.getItem('username');
     useEffect(() => {
         async function fetchUser() {
@@ -32,9 +35,11 @@ function UserProfile() {
         });
         const data = await response.json();
         setUser(data);
+        localStorage.setItem('username', data.username); // Update the local storage with the new username
     }
 
-    if (!user) {
+
+        if (!user) {
         return <div>Loading...</div>;
     }
 
@@ -54,9 +59,11 @@ function UserProfile() {
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" value={newPassword || user.password} onChange={(event) => setNewPassword(event.target.value)} />
                 </div>
-                <button type="submit">Save Changes</button>
+                <button className="button-layout" type="submit">Save Changes</button>
             </form>
+            <button className="button-layout" onClick={handleLogout}>Logout</button>
         </div>
+
     );
 }
 

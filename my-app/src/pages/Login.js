@@ -17,6 +17,7 @@ function Login() {
                     response.json().then(data => {
                         localStorage.setItem('username', data.username);
                         console.log("Login successful");
+                        window.location.href = '/';
                     });
                 } else if (response.status === 401) {
                     console.log("Invalid username or password");

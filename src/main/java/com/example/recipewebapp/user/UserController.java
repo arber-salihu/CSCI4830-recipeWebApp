@@ -36,10 +36,10 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "{userId}")
-    public ResponseEntity<Void> updateUser(@PathVariable("username") String username, @RequestBody User user) {
-        userService.updateUser(username, user);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PutMapping("/username/{username}")
+    public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
+        User updatedUser = userService.updateUser(username, user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "{userId}")
