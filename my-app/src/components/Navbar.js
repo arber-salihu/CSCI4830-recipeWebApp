@@ -13,6 +13,9 @@ const Navbar = () => {
                         <Link to="/newPage" >New Recipe</Link>
                     </li>
                     <li className="right">
+                        <Link to="/userprofile" >Edit Profile</Link>
+                    </li>
+                    <li className="right">
                         <Link to="/login" >Login</Link>
                     </li>
                 </ul>
