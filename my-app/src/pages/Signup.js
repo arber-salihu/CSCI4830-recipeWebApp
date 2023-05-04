@@ -9,7 +9,7 @@ function SignUp() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        fetch('http://localhost:8080/api/v1/users', {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

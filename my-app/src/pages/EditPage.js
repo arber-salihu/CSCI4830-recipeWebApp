@@ -11,7 +11,7 @@ function EditRecipe() {
 
   useEffect(() => {
     async function fetchRecipe() {
-      const response = await fetch(`http://localhost:8080/api/v1/recipe/${id}`);
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/recipe/${id}`);
       const data = await response.json();
       setRecipe(data);
     }
@@ -19,7 +19,7 @@ function EditRecipe() {
   }, [id]);
 
   const handleDeleteClick = async () => {
-    await fetch(`http://localhost:8080/api/v1/recipe/${id}/${username}`, {
+    await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/recipe/${id}/${username}`, {
       method: "DELETE",
     });
     navigate("/");
@@ -34,7 +34,7 @@ function EditRecipe() {
     const ingredients = formData.get("ingredients");
     const calorieCount = parseInt(formData.get("calorieCount"), 10);
 
-    await fetch(`http://localhost:8080/api/v1/recipe/${id}/${username}`, {
+    await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/recipe/${id}/${username}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

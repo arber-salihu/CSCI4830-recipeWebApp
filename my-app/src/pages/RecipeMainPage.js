@@ -8,7 +8,7 @@ function RecipeList() {
 
   useEffect(() => {
     async function fetchRecipes() {
-      const response = await fetch("http://localhost:8080/api/v1/recipe");
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/recipe`);
       const data = await response.json();
       setRecipes(data);
     }
