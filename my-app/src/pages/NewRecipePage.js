@@ -13,7 +13,7 @@ function NewRecipeForm() {
 
         try {
             const username = localStorage.getItem('username');
-            const response = await fetch(`http://localhost:8080/api/v1/recipe/${username}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/recipe/${username}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

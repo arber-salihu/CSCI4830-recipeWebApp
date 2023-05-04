@@ -12,7 +12,7 @@ function UserProfile() {
     const username = localStorage.getItem('username');
     useEffect(() => {
         async function fetchUser() {
-            const response = await fetch(`http://localhost:8080/api/v1/users/username/${username}`);
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/users/username/${username}`);
             const data = await response.json();
             setUser(data);
         }
@@ -26,7 +26,7 @@ function UserProfile() {
             username: newUsername || user.username,
             password: newPassword || user.password
         };
-        const response = await fetch(`http://localhost:8080/api/v1/users/username/${username}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/users/username/${username}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
