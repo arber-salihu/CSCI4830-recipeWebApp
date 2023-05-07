@@ -20,14 +20,14 @@ function RecipeDetails() {
   }
 
   return (
-    <div className="wideFancyDiv">
-      <h1>{recipe.name}</h1><br/>
-      <h5>Description: {recipe.description}</h5>
-      <h5>Ingredients: {recipe.ingredients}</h5>
-      <h5>Instructions: {recipe.instructions}</h5>
-      <p>{recipe.calorieCount} calories</p>
-      <button className="fancyButton"><Link to={`/edit-recipe/${id}`}>Edit</Link></button>
-    </div>
+      <div className="wideFancyDiv" id="recipe-details">
+          <h1 id="recipe-title">{recipe.name}</h1><br/>
+          <h5 id="recipe-description">Description: {recipe.description}</h5>
+          <h5 id="recipe-ingredients">Ingredients: {recipe.ingredients}</h5>
+          <h5 id="recipe-instructions">Instructions: {recipe.instructions}</h5>
+          <p id="recipe-calorie-count">{recipe.calorieCount} calories</p>
+          <button className="fancyButton" id="edit-button"><Link to={`/edit-recipe/${id}`}>Edit</Link></button>
+      </div>
   );
 }
 

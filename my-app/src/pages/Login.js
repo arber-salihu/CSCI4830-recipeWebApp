@@ -34,18 +34,18 @@ function Login() {
         <div>
             <form onSubmit={handleSubmit} className="fancyDiv">
                 <h1>Login</h1>
-                <label>
+                <label htmlFor="username" id="username-label">
                     Username:
-                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+                    <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} />
                 </label>
                 <br />
-                <label>
+                <label htmlFor="password" id="password-label">
                     Password:
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
                 </label>
                 <br />
-                <button type="submit">Login</button>
-                <button><Link to={"/signup"}>Sign Up</Link></button>
+                <button type="submit" id="login-button">Login</button>
+                <button id="signup-button"><Link to={"/signup"}>Sign Up</Link></button>
             </form>
         </div>
     );
