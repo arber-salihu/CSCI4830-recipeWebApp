@@ -1,17 +1,20 @@
 package com.example.RecipeWebAppTest;
 
+import java.time.Duration;
+import java.util.Collections;
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-
+import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
 
-import java.time.Duration;
-import java.util.Collections;
-
-public class SignupTestCaseSuccess {
+public class PleaseLord {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -34,19 +37,17 @@ public class SignupTestCaseSuccess {
   }
 
   @Test
-  public void testSignupTestCaseSuccess() throws Exception {
-    driver.get(baseUrl + "chrome://newtab/");
+  public void testPleaseLord() throws Exception {
+    driver.get("https://www.google.com/");
     driver.get("http://34.29.235.45/");
     driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.linkText("Sign Up")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//input[@value='hello@gmail.com']")).clear();
-    driver.findElement(By.xpath("//input[@value='hello@gmail.com']")).sendKeys("hello@gmail.com");
-    driver.findElement(By.xpath("//input[@value='hello']")).clear();
-    driver.findElement(By.xpath("//input[@value='hello']")).sendKeys("hello");
-    driver.findElement(By.xpath("//input[@value='testme']")).clear();
-    driver.findElement(By.xpath("//input[@value='testme']")).sendKeys("testme");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    driver.findElement(By.id("username")).click();
+    driver.findElement(By.id("username")).clear();
+    driver.findElement(By.id("username")).sendKeys("firstuser");
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    driver.findElement(By.id("password")).sendKeys("first1");
+    driver.findElement(By.id("login-button")).click();
   }
 
   @After
