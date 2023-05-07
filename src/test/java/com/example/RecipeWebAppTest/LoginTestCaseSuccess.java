@@ -1,14 +1,14 @@
 package com.example.RecipeWebAppTest;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
-
-import static org.aspectj.bridge.MessageUtil.fail;
+import java.util.Collections;
 
 public class LoginTestCaseSuccess {
   private WebDriver driver;
@@ -16,10 +16,17 @@ public class LoginTestCaseSuccess {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
   JavascriptExecutor js;
-  @BeforeEach
+  @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "");
-    driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--remote-allow-origins=*");
+
+    // Enable verbose logging
+    options.setCapability("goog:loggingPrefs", Collections.singletonMap("browser", "ALL"));
+
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lee\\chromedriver_win32\\chromedriver.exe");
+    driver = new ChromeDriver(options);
+
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     js = (JavascriptExecutor) driver;
@@ -37,7 +44,7 @@ public class LoginTestCaseSuccess {
     driver.findElement(By.xpath("//button[@type='submit']")).click();
   }
 
-  @AfterEach
+  @After
   public void tearDown() throws Exception {
     driver.quit();
     String verificationErrorString = verificationErrors.toString();

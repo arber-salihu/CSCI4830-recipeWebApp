@@ -1,14 +1,12 @@
 package com.example.RecipeWebAppTest;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
-
-import static org.aspectj.bridge.MessageUtil.fail;
 
 public class EditRecipeTestCaseFail {
   private WebDriver driver;
@@ -16,7 +14,7 @@ public class EditRecipeTestCaseFail {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
   JavascriptExecutor js;
-  @BeforeEach
+  @Before
   public void setUp() throws Exception {
     System.setProperty("webdriver.chrome.driver", "");
     driver = new ChromeDriver();
@@ -36,7 +34,7 @@ public class EditRecipeTestCaseFail {
     driver.findElement(By.xpath("//button[@type='submit']")).click();
   }
 
-  @AfterEach
+  @After
   public void tearDown() throws Exception {
     driver.quit();
     String verificationErrorString = verificationErrors.toString();
