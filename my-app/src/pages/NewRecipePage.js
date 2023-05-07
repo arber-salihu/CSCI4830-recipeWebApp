@@ -46,10 +46,10 @@ function NewRecipeForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="fancyDiv">
-            <h1>Add New Recipe</h1>
+        <form onSubmit={handleSubmit} className="fancyDiv" id="new-recipe-form">
+            <h1 id="new-recipe-form-title">Add New Recipe</h1>
             <div>
-                <label htmlFor="title">Recipe Title:</label>
+                <label htmlFor="title" id="title-label">Recipe Title:</label>
                 <input
                     type="text"
                     id="title"
@@ -58,7 +58,7 @@ function NewRecipeForm() {
                 />
             </div>
             <div>
-                <label htmlFor="description">Description:</label>
+                <label htmlFor="description" id="description-label">Description:</label>
                 <textarea
                     id="description"
                     value={description}
@@ -66,7 +66,7 @@ function NewRecipeForm() {
                 ></textarea>
             </div>
             <div>
-                <label htmlFor="ingredients">Ingredients:</label>
+                <label htmlFor="ingredients" id="ingredients-label">Ingredients:</label>
                 <textarea
                     id="ingredients"
                     value={ingredients}
@@ -74,7 +74,7 @@ function NewRecipeForm() {
                 ></textarea>
             </div>
             <div>
-                <label htmlFor="instructions">Instructions:</label>
+                <label htmlFor="instructions" id="instructions-label">Instructions:</label>
                 <textarea
                     id="instructions"
                     value={instructions}
@@ -82,7 +82,7 @@ function NewRecipeForm() {
                 ></textarea>
             </div>
             <div>
-                <label htmlFor="calorieCount">Calorie Count:</label>
+                <label htmlFor="calorieCount" id="calorieCount-label">Calorie Count:</label>
                 <input
                     type="number"
                     id="calorieCount"
@@ -90,8 +90,9 @@ function NewRecipeForm() {
                     onChange={(event) => setCalorieCount(event.target.value)}
                 />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit-button">Submit</button>
         </form>
+
     );
 }
 

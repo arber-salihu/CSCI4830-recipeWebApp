@@ -35,25 +35,26 @@ function SignUp() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="fancyDiv">
+            <form onSubmit={handleSubmit} className="fancyDiv" id="signup-form">
                 <h1>Sign Up</h1>
-                <label>
+                <label htmlFor="email" id="email-label">
                     Email:
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+                    <input type="email" id="email-input" value={email} onChange={e => setEmail(e.target.value)} />
                 </label>
                 <br />
-                <label>
+                <label htmlFor="username" id="username-label">
                     Username:
-                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+                    <input type="text" id="username-input" value={username} onChange={e => setUsername(e.target.value)} />
                 </label>
                 <br />
-                <label>
+                <label htmlFor="password" id="password-label">
                     Password:
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <input type="password" id="password-input" value={password} onChange={e => setPassword(e.target.value)} />
                 </label>
                 <br />
-                <button type="submit">Sign Up</button>
+                <button type="submit" id="signup-button">Sign Up</button>
             </form>
+
         </div>
     );
 }

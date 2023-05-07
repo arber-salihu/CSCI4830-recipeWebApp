@@ -49,55 +49,55 @@ function EditRecipe() {
   }
 
   return (
-  <div className="fancyDiv">
-    <h1>Edit Recipe</h1>
-    <form onSubmit={handleFormSubmit}>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-            id="name"
-            name="name"
-            type="text"
-            defaultValue={recipe.name}
-        />
+      <div className="fancyDiv" id="edit-recipe">
+        <h1 id="edit-recipe-title">Edit Recipe</h1>
+        <form onSubmit={handleFormSubmit}>
+          <div>
+            <label htmlFor="name" id="name-label">Name</label>
+            <input
+                id="name"
+                name="name"
+                type="text"
+                defaultValue={recipe.name}
+            />
+          </div>
+          <div>
+            <label htmlFor="description" id="description-label">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                defaultValue={recipe.description}
+            />
+          </div>
+          <div>
+            <label htmlFor="ingredients" id="ingredients-label">Ingredients</label>
+            <textarea
+                id="ingredients"
+                name="ingredients"
+                defaultValue={recipe.ingredients}
+            />
+          </div>
+          <div>
+            <label htmlFor="instructions" id="instructions-label">Instructions</label>
+            <textarea
+                id="instructions"
+                name="instructions"
+                defaultValue={recipe.instructions}
+            />
+          </div>
+          <div>
+            <label htmlFor="calorieCount" id="calorieCount-label">Calorie Count</label>
+            <input
+                id="calorieCount"
+                name="calorieCount"
+                type="number"
+                defaultValue={recipe.calorieCount}
+            />
+          </div>
+          <button type="submit" className="fancyButton" id="save-button">Save Changes</button>
+          <button onClick={handleDeleteClick} className="fancyButton red-button" id="delete-button">Delete Recipe</button>
+        </form>
       </div>
-      <div>
-        <label htmlFor="description">Description</label>
-        <textarea
-            id="description"
-            name="description"
-            defaultValue={recipe.description}
-        />
-      </div>
-      <div>
-        <label htmlFor="ingredients">Ingredients</label>
-        <textarea
-            id="ingredients"
-            name="ingredients"
-            defaultValue={recipe.ingredients}
-        />
-      </div>
-      <div>
-        <label htmlFor="instructions">Instructions</label>
-        <textarea
-            id="instructions"
-            name="instructions"
-            defaultValue={recipe.instructions}
-        />
-      </div>
-      <div>
-        <label htmlFor="calorieCount">Calorie Count</label>
-        <input
-            id="calorieCount"
-            name="calorieCount"
-            type="number"
-            defaultValue={recipe.calorieCount}
-        />
-      </div>
-      <button type="submit" className="fancyButton">Save Changes</button>
-      <button onClick={handleDeleteClick} className="fancyButton red-button">Delete Recipe</button>
-    </form>
-  </div>
 
 );
 }
