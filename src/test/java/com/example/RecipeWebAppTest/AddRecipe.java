@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 
-public class PleaseLord {
+public class AddRecipe {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -37,17 +37,53 @@ public class PleaseLord {
   }
 
   @Test
-  public void testPleaseLord() throws Exception {
-    driver.get("https://www.google.com/");
+  public void testAddRecipe() throws Exception {
     driver.get("http://34.29.235.45/");
+    Thread.sleep(1500);
     driver.findElement(By.linkText("Login")).click();
+    Thread.sleep(1500);
     driver.findElement(By.id("username")).click();
     driver.findElement(By.id("username")).clear();
+    Thread.sleep(1500);
     driver.findElement(By.id("username")).sendKeys("firstuser");
+    Thread.sleep(1500);
     driver.findElement(By.id("password")).click();
     driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
     driver.findElement(By.id("password")).sendKeys("first1");
+    Thread.sleep(1500);
     driver.findElement(By.id("login-button")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.linkText("New Recipe")).click();
+    driver.findElement(By.id("title")).click();
+    driver.findElement(By.id("title")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("title")).sendKeys("Peanut Butter Jelly Sandwich");
+    Thread.sleep(1500);
+    driver.findElement(By.id("description")).click();
+    driver.findElement(By.id("description")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("description")).sendKeys("A Tasty Sandwich.");
+    Thread.sleep(1500);
+    driver.findElement(By.id("ingredients")).click();
+    driver.findElement(By.id("ingredients")).click();
+    driver.findElement(By.id("ingredients")).click();
+    driver.findElement(By.id("ingredients")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("ingredients")).sendKeys("Peanut butter, Jelly, bread.");
+    Thread.sleep(1500);
+    driver.findElement(By.id("instructions")).click();
+    driver.findElement(By.id("instructions")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("instructions")).sendKeys("make it.");
+    Thread.sleep(1500);
+    driver.findElement(By.id("calorieCount")).click();
+    driver.findElement(By.id("calorieCount")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("calorieCount")).sendKeys("300");
+    Thread.sleep(1500);
+    driver.findElement(By.id("submit-button")).click();
+    Thread.sleep(1500);
   }
 
   @After

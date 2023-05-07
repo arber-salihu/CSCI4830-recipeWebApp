@@ -1,4 +1,4 @@
-package com.example;
+package com.example.RecipeWebAppTest;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 
-public class SignupTwo {
+public class EditPassword {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -37,31 +37,58 @@ public class SignupTwo {
   }
 
   @Test
-  public void testSignupTwo() throws Exception {
+  public void testEditPassword() throws Exception {
     driver.get("http://34.29.235.45/");
     driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/button[2]")).click();
-    driver.findElement(By.linkText("Sign Up")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label/input")).clear();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label/input")).sendKeys("testing@testing.com");
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[2]/input")).clear();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[2]/input")).sendKeys("test2");
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[3]/input")).clear();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[3]/input")).sendKeys("test2");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).click();
+    driver.findElement(By.id("username")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).sendKeys("firstuser");
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("first1");
+    Thread.sleep(1500);
+    driver.findElement(By.id("login-button")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.linkText("Profile")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("first10");
+    Thread.sleep(1500);
+    driver.findElement(By.id("saveChangesButton")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("logoutButton")).click();
+    Thread.sleep(1500);
     driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label/input")).clear();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label/input")).sendKeys("test2");
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[2]/input")).clear();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[2]/input")).sendKeys("test2");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).click();
+    driver.findElement(By.id("username")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).sendKeys("firstuser");
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("first10");
+    Thread.sleep(1500);
+    driver.findElement(By.id("login-button")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.linkText("Profile")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("first1");
+    Thread.sleep(1500);
+    driver.findElement(By.id("saveChangesButton")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("logoutButton")).click();
+    Thread.sleep(1500);
   }
 
   @After
@@ -106,4 +133,3 @@ public class SignupTwo {
     }
   }
 }
-

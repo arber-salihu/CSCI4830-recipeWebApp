@@ -1,17 +1,20 @@
 package com.example.RecipeWebAppTest;
 
+import java.time.Duration;
+import java.util.Collections;
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-
+import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
 
-import java.time.Duration;
-import java.util.Collections;
-
-public class SignupTestCaseSuccess {
+public class SignupAndLogin {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -34,19 +37,40 @@ public class SignupTestCaseSuccess {
   }
 
   @Test
-  public void testSignupTestCaseSuccess() throws Exception {
-    driver.get(baseUrl + "chrome://newtab/");
+  public void testSignupAndLogin() throws Exception {
     driver.get("http://34.29.235.45/");
     driver.findElement(By.linkText("Login")).click();
+    Thread.sleep(1500);
     driver.findElement(By.linkText("Sign Up")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//input[@value='hello@gmail.com']")).clear();
-    driver.findElement(By.xpath("//input[@value='hello@gmail.com']")).sendKeys("hello@gmail.com");
-    driver.findElement(By.xpath("//input[@value='hello']")).clear();
-    driver.findElement(By.xpath("//input[@value='hello']")).sendKeys("hello");
-    driver.findElement(By.xpath("//input[@value='testme']")).clear();
-    driver.findElement(By.xpath("//input[@value='testme']")).sendKeys("testme");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("email-input")).click();
+    driver.findElement(By.id("email-input")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("email-input")).sendKeys("testingmore@test.net");
+    Thread.sleep(1500);
+    driver.findElement(By.id("username-input")).click();
+    driver.findElement(By.id("username-input")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username-input")).sendKeys("test4");
+    Thread.sleep(1500);
+    driver.findElement(By.id("password-input")).click();
+    driver.findElement(By.id("password-input")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password-input")).sendKeys("test4");
+    Thread.sleep(1500);
+    driver.findElement(By.id("signup-button")).click();
+    driver.findElement(By.linkText("Login")).click();
+    driver.findElement(By.id("username")).click();
+    driver.findElement(By.id("username")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).sendKeys("test4");
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("test4");
+    Thread.sleep(1500);
+    driver.findElement(By.id("login-button")).click();
   }
 
   @After

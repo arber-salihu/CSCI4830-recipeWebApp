@@ -1,16 +1,20 @@
 package com.example.RecipeWebAppTest;
 
+import java.time.Duration;
+import java.util.Collections;
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-
+import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
 
-import java.time.Duration;
-import java.util.Collections;
-
-public class LoginTestCaseSuccess {
+public class DeleteRecipe {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -33,15 +37,32 @@ public class LoginTestCaseSuccess {
   }
 
   @Test
-  public void testLoginTestCaseSuccess() throws Exception {
+  public void testDeleteRecipe() throws Exception {
+    driver.get("https://www.google.com/");
     driver.get("http://34.29.235.45/");
+    Thread.sleep(1500);
+    driver.findElement(By.xpath("//div[@id='root']/div/nav")).click();
+    Thread.sleep(1500);
     driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//input[@value='hello']")).clear();
-    driver.findElement(By.xpath("//input[@value='hello']")).sendKeys("hello");
-    driver.findElement(By.xpath("//input[@value='testme']")).clear();
-    driver.findElement(By.xpath("//input[@value='testme']")).sendKeys("testme");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).click();
+    driver.findElement(By.id("username")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).sendKeys("firstuser");
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("first1");
+    Thread.sleep(1500);
+    driver.findElement(By.id("login-button")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Profile'])[1]/following::h2[1]")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.linkText("Edit")).click();
+    Thread.sleep(7000);
+    driver.findElement(By.id("delete-button")).click();
+    Thread.sleep(1500);
   }
 
   @After

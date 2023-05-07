@@ -1,14 +1,20 @@
 package com.example.RecipeWebAppTest;
 
+import java.time.Duration;
+import java.util.Collections;
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-
+import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
 
-import java.time.Duration;
-
-public class LoginTestCaseFail {
+public class Logout {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -16,28 +22,43 @@ public class LoginTestCaseFail {
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "");
-    driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--remote-allow-origins=*");
+
+    // Enable verbose logging
+    options.setCapability("goog:loggingPrefs", Collections.singletonMap("browser", "ALL"));
+
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lee\\chromedriver_win32\\chromedriver.exe");
+    driver = new ChromeDriver(options);
+
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     js = (JavascriptExecutor) driver;
   }
 
   @Test
-  public void testLoginTestCaseFail() throws Exception {
+  public void testLogout() throws Exception {
+    driver.get("https://www.google.com/");
     driver.get("http://34.29.235.45/");
+    Thread.sleep(1500);
     driver.findElement(By.linkText("Login")).click();
-    driver.findElement(By.xpath("//input[@value='']")).click();
-    driver.findElement(By.xpath("//input[@value='ddubas']")).clear();
-    driver.findElement(By.xpath("//input[@value='ddubas']")).sendKeys("ddubas");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form")).click();
-    driver.findElement(By.xpath("//input[@value='']")).clear();
-    driver.findElement(By.xpath("//input[@value='']")).sendKeys("");
-    driver.findElement(By.xpath("//div[@id='root']/div[2]/form/label[2]/input")).click();
-    driver.findElement(By.xpath("//input[@value='hello']")).clear();
-    driver.findElement(By.xpath("//input[@value='hello']")).sendKeys("hello");
-    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).click();
+    driver.findElement(By.id("username")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("username")).sendKeys("firstuser");
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).clear();
+    Thread.sleep(1500);
+    driver.findElement(By.id("password")).sendKeys("first1");
+    Thread.sleep(1500);
+    driver.findElement(By.id("login-button")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.linkText("Profile")).click();
+    Thread.sleep(1500);
+    driver.findElement(By.id("logoutButton")).click();
+    Thread.sleep(1500);
   }
 
   @After
